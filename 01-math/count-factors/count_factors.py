@@ -15,7 +15,7 @@ def count_factors_brute(n: int) -> int:
 # Only check up to √n; each hit gives two factors, except when i == n // i.
 # Time: O(√n), Space: O(1)
 def count_factors(n: int) -> int:
-    count = 0
+    count = 0 
     i = 1
     while i * i <= n:
         if n % i == 0:
