@@ -1,8 +1,20 @@
-// Range Sum Query: for each [L, R] in B, return A[L] + ... + A[R].
+// Range Sum Query: for each [left, right] in queries, return nums[left] + ... + nums[right].
 
-function rangeSumQuery(A, B) {
-  // TODO: write your solution here
-  return [];
+function rangeSumQuery(nums, queries) {
+  // prefixSum[i] = nums[0] + nums[1] + ... + nums[i]
+  const prefixSum = new Array(nums.length);
+  prefixSum[0] = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    prefixSum[i] = prefixSum[i - 1] + nums[i];
+  }
+
+  const rangeSums = [];
+  for (const [left, right] of queries) {
+    // sum(left..right) = sum(0..right) - sum(0..left-1); when left is 0 there is nothing to subtract
+    const sumBeforeLeft = left === 0 ? 0 : prefixSum[left - 1];
+    rangeSums.push(prefixSum[right] - sumBeforeLeft);
+  }
+  return rangeSums;
 }
 
 // Quick checks
