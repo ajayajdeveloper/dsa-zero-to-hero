@@ -1,13 +1,13 @@
 # Special Index
 
-**Problem:** Given an array `arr` of size `N`, count the indices `i` such that, after removing `arr[i]`, the sum of the elements at even indices equals the sum of the elements at odd indices.
+**Problem:** Given an array `A` of size `N`, count the indices `i` such that, after removing `A[i]`, the sum of the elements at even indices equals the sum of the elements at odd indices.
 
 Indices are 0-based and are counted again after the removal, so every element after `i` moves one position to the left.
 
 ## Example 1
 
 ```
-Input:  arr = [2, 1, 6, 4]
+Input:  A = [2, 1, 6, 4]
 Output: 1
 ```
 
@@ -19,7 +19,7 @@ Output: 1
 ## Example 2
 
 ```
-Input:  arr = [1, 1, 1]
+Input:  A = [1, 1, 1]
 Output: 3
 ```
 
@@ -28,14 +28,17 @@ Removing any element leaves `[1, 1]`, where even sum = odd sum = 1.
 ## Example 3
 
 ```
-Input:  arr = [1, 2, 3]
-Output: 0
+Input:  A = [-1, 2, -1]
+Output: 1
 ```
+
+Removing index 1 leaves `[-1, -1]`, where even sum = odd sum = -1. Values can be negative.
 
 ## Constraints
 
 - `1 <= N <= 10^5`
-- `1 <= arr[i] <= 10^4`
+- `-10^5 <= A[i] <= 10^5`
+- Sum of all elements of `A` `<= 10^9`
 
 ## Run
 
