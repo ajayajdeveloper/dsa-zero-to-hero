@@ -1,8 +1,24 @@
 // Special Index: count indices whose removal makes the even-index sum equal the odd-index sum.
 
-function specialIndex(A) {
-  // TODO: write your solution here
-  return 0;
+function specialIndex(arr) {
+  const n = arr.length;
+  const evenPrefix = new Array(n + 1).fill(0);
+  const oddPrefix = new Array(n + 1).fill(0);
+
+  for (let i = 0; i < n; i++) {
+    evenPrefix[i + 1] = evenPrefix[i] + (i % 2 === 0 ? arr[i] : 0);
+    oddPrefix[i + 1] = oddPrefix[i] + (i % 2 === 1 ? arr[i] : 0);
+  }
+
+
+  let count = 0;
+  for (let i = 0; i < n; i++) {
+    const newEvenSum = evenPrefix[i] + (oddPrefix[n] - oddPrefix[i + 1]);
+    const newOddSum = oddPrefix[i] + (evenPrefix[n] - evenPrefix[i + 1]);
+    if (newEvenSum === newOddSum) count++;
+  }
+  return count;
+  
 }
 
 // Quick checks
